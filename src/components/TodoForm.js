@@ -13,10 +13,13 @@ function TodoForm(props) {
 
     setInput("");
   }
-  const inputRef = useRef(null)
+
+  const inputRef = useRef(null);
 
   useEffect(() => {
     inputRef.current.focus()
+
+    console.log('dlkfms')
   })
 
   const onChangeHandler = event => {
@@ -26,17 +29,15 @@ function TodoForm(props) {
 
     <form className='todo-form' onSubmit={handleSubmit}>
       {
-        props.edit ? 
-        (<>
-         <input onChange={onChangeHandler} type='text' placeholder='edit task' value={input} name='text' className='todo-input edit' ref={inputRef}></input>
-      <button className='todo-button' >update</button></>) :
-      (<>
-       <input onChange={onChangeHandler} type='text' placeholder='Add a to do' value={input} name='text' className='todo-input' ref={inputRef}></input>
-      <button className='todo-button' >Add todo</button>
-      </>)
+        props.edit ? // condetional rendering
+          (<>
+            <input onChange={onChangeHandler} type='text' placeholder='edit task' value={input} name='text' className='todo-input edit' ref={inputRef}></input>
+            <button className='todo-button' >update</button></>) :
+          (<>
+            <input onChange={onChangeHandler} type='text' placeholder='Add a to do' value={input} name='text' className='todo-input' ref={inputRef}></input>
+            <button className='todo-button' >Add todo</button>
+          </>)
       }
-     
-
     </form>
 
   )
